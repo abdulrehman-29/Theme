@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/* Default: Dark Theme */
+:root {
+    --bg: #0f172a;
+    --text: #f8fafc;
+    --btn-bg: #6366f1;
+}
+
+/* Light Theme: Triggered when 'light-mode' class is on body */
+body.light-mode {
+    --bg: #f1f5f9;
+    --text: #1e293b;
+    --btn-bg: #4f46e5;
+}
+
+/* Apply the variables */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease; /* Makes the switch smooth */
+}
+
+.theme-btn {
+    background-color: var(--btn-bg);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <button id="themeToggle" class="theme-btn">Switch Theme</button>
+</body>
+<script>
+    const btn = document.getElementById('themeToggle');
+
+btn.addEventListener('click', () => {
+    // This one line does all the work
+    document.body.classList.toggle('light-mode');
+
+    // Optional: Change the button text based on the mode
+    if (document.body.classList.contains('light-mode')) {
+        btn.innerText = "Switch to Dark";
+    } else {
+        btn.innerText = "Switch to Light";
+    }
+});
+</script>
+</html>
